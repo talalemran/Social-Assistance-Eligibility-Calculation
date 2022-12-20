@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Social Assistance Eligibility Calculation</title>
+    <style>
+        
+        /* Global */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #DFE6E9;
+            color: #2D3436;
+            font-family: sans-serif;
+            font-size: 20px;
+        }
+
+        p {
+            font-weight: bold;
+        }
+
+        .align-center {
+            width: auto;
+            max-width: 900px;
+            padding: 10px;
+            margin: 0 auto;
+        }
+
+        input {
+            width: 90%;
+            margin-top: 5px;
+            height: 30px;
+            border: #60BE92 solid 1px;
+        }
+        
+        button {
+            width: 90%;
+            background-color: #60BE92;
+            color: #2D3436;
+            font-weight: bold;
+            border: none;
+            height: 30px;
+        }
+
+        /* Container */
+        #container {
+            margin: 0 auto;
+            width: auto;
+            max-width: 900px;
+            /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+        }
+        /* Header */
+        header {
+            padding: 10px;
+            background-color: #ffffff;
+        }
+
+        header h1 {
+            font-size: 25px;
+            color: #2D3436;
+            display: inline;
+        }
+
+        /* Hero */
+        #hero {
+        background: url('./img/no-money-4865814_1920.jpg') no-repeat 0 -400px;
+        min-height: 500px;
+        text-align: center;
+        color: #ffffff;
+        }
+
+        #hero h1 {
+        margin-top: 100px;
+        font-size: 55px;
+        margin-bottom: 10px;
+        text-shadow: 1px 1px 2px #2D3436;
+        }
+
+        #hero p {
+        font-size: 20px;
+        text-shadow: 1px 1px 2px #2D3436;
+        }
+        
+        
+        #main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #2D3436;
+            color: #DFE6E9;
+            padding: 2px;
+            text-align: center;
+        }
+    
+    </style>
+
+<script>
+        function myTotalIncome() {
+            let myIncome = document.getElementById('yourIncome').value;
+            let mySpouseIncome = document.getElementById('spouseIncome').value;
+            let myChildIncome = document.getElementById('childrenIncome').value;
+            let totalIncome = parseFloat(myIncome) + parseFloat(mySpouseIncome) + parseFloat(myChildIncome);
+
+            if (myIncome === "") {
+                alert('You must enter your income.');
+                return false;
+            }
+
+            if (mySpouseIncome === "") {
+                alert('You must enter your spouse income.');
+                return false;
+            }
+
+            if (myChildIncome === "") {
+                alert('You must enter your children income.');
+                return false;
+            }
+
+            if (!isNaN(totalIncome)){
+            document.getElementById('totalIncome').innerHTML = 'Your total income: $' + totalIncome;
+            }
+
+            if (totalIncome <= 10000) {
+                document.getElementById('eligible').innerHTML = '<span style= "color: #60BE92;">You are eligible to get the social assistance.</span>';
+            }
+            
+            else {
+                document.getElementById('eligible').innerHTML = '<span style= "color: red;">You are not eligible to get the social assistance.</span>';
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <section class="align-center" >
+        <h1>Social Assistance Eligibility Calculation</h1>
+        </section>
+    </header>
+    <section id="hero">
+        <section class="align-center" >
+        <h1>Are you out of money because of financial issue?</h1>
+        <p>Then, try out our social assistance program. Maybe you are eligible for the assistance program.</p>
+        </section>
+    </section>
+    <div id="container">
+            <div id="main">
+            <section class="align-center" >
+            <form onsubmit="return false;">
+            <h2>Family Income Form</h2>
+            <p>Please, fill out the form below to see if you are eligible for our social assistance program.</p>
+            <br>
+            <P>Your income:
+            <br>
+            <input type="number" id="yourIncome" placeholder="your income" required></P>
+            <P>Your spouse income:
+            <br>
+            <input type="number" id="spouseIncome" placeholder="spouse income" required></P>
+            <P>Your childern income:
+            <br>
+            <input type="number" id="childrenIncome" placeholder="your childern income" required></P>
+            <button onclick="myTotalIncome()">Calculate</button>
+            </form>
+            <p id= "totalIncome">Your total income goes here.</p>
+            <p id= "eligible">Your eligibility for social assistance.</p>
+            <p>Thank you for using our website.</p>
+            </section>
+        </div>
+    </div>
+    <footer>
+        <section class="align-center" >
+        <p>Created with <img src="./img/heart.png" alt="Love" width="22px" height="18px"> by: Talal Emran, 2020.</p>
+        </section>
+    </footer>
+    
+</body>
+</html>
